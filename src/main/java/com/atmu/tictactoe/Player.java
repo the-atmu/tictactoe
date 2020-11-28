@@ -14,34 +14,38 @@ public class Player {
         moves = 0;
     }
 
-    void chooseMoveTwo(){
-        System.out.println("Player 2 choose your next move");
-        Scanner scanner = new Scanner(System.in);
-        System.out.print("(0-2) row: ");
-        int i = scanner.nextInt();
-        System.out.print("(0-2) col: ");
-        int j = scanner.nextInt();
+    void chooseMove(){
+        if(this.equals(game.player1)){
+            System.out.println("Player 1 choose your next move");
+            Scanner scanner = new Scanner(System.in);
+            System.out.print("(0-2) row: ");
+            int i = scanner.nextInt();
+            System.out.print("(0-2) col: ");
+            int j = scanner.nextInt();
 
-        if(!game.checkAvailableMove(i,j)){
-            System.out.println("Choose available position");
-            game.tryagain(this);
+            if(!game.checkAvailableMove(i,j)){
+                System.out.println("Choose available position");
+                again();
+            }else{
+                game.executeMove(this,i,j);}
         }else{
-            game.executeMove(this,i,j);}
+            System.out.println("Player 2 choose your next move");
+            Scanner scanner = new Scanner(System.in);
+            System.out.print("(0-2) row: ");
+            int i = scanner.nextInt();
+            System.out.print("(0-2) col: ");
+            int j = scanner.nextInt();
+
+            if(!game.checkAvailableMove(i,j)){
+                System.out.println("Choose available position");
+                again();
+            }else{
+                game.executeMove(this,i,j);}
+        }
     }
 
-    void chooseMoveOne(){
-        System.out.println("Player 1 choose your next move");
-        Scanner scanner = new Scanner(System.in);
-        System.out.print("(0-2) row: ");
-        int i = scanner.nextInt();
-        System.out.print("(0-2) col: ");
-        int j = scanner.nextInt();
-
-        if(!game.checkAvailableMove(i,j)){
-            System.out.println("Choose available position");
-            game.tryagain(this);
-        }else{
-            game.executeMove(this,i,j);}
+    private void again(){
+        chooseMove();
     }
 
 }
