@@ -1,0 +1,9 @@
+<component name="libraryTable">
+  <library name="ejml-all-0.40-javadoc">
+    <CLASSES />
+    <JAVADOC>
+      <root url="jar://$PROJECT_DIR$/src/ejml-all-0.40-javadoc.jar!/" />
+    </JAVADOC>
+    <SOURCES />
+  </library>
+</component>
