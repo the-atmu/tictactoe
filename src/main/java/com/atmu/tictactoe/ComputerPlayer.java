@@ -5,7 +5,13 @@ import java.util.Collections;
 import java.util.List;
 import java.util.Random;
 import java.util.stream.Collectors;
-
+/*
+* Here the logic exists that can detect a certain threat or a possibility of a win
+* If there's no potential of losing the algorithms chooses to move towards a win.
+* If a threat by player 1 is detected, meaning that player 1 is one move away from winning then it can
+* block the potential win of player 1. Player 2 in computer mode however is not unbeatable
+* it cannot foresee possibilities of winning like other algorithms such as minimax.
+ */
 public class ComputerPlayer extends Player {
     final int P1_MARK = 2;
     final int P2_MARK = -2;
@@ -84,34 +90,28 @@ public class ComputerPlayer extends Player {
         return false;
     }
 
-    boolean checkPotentialLoss(){
-        if(diagonal(P1_MARK)) return true;
-        if(reverseDiagonal(P1_MARK)) return true;
-        if(rowforloop(P1_MARK)) return true;
-        if(colforloop(P1_MARK)) return true;
-        return false;
+    private boolean checkPotentialLoss(){
+        return diagonal(P1_MARK) || reverseDiagonal(P1_MARK)
+                || rowforloop(P1_MARK) || colforloop(P1_MARK);
     }
 
-    boolean checkPotentialWin(){
-        if(diagonal(P2_MARK)) return true;
-        if(reverseDiagonal(P2_MARK)) return true;
-        if(rowforloop(P2_MARK)) return true;
-        if(colforloop(P2_MARK)) return true;
-        return false;
+    private boolean checkPotentialWin(){
+        return diagonal(P2_MARK) || reverseDiagonal(P2_MARK)
+                || rowforloop(P2_MARK) || colforloop(P2_MARK);
     }
 
     private void managePotentialMove(int row,int col){
         game.executeMove(this,row,col);
     }
 
-    public static void strategy(ComputerPlayer player){
-
-        if(player.checkPotentialWin()) return;
-        else if (player.checkPotentialLoss()) return;
-        else player.randomizeMove();
+    @Override
+    public void chooseMove(){
+        if(this.checkPotentialWin());
+        else if (this.checkPotentialLoss());
+        else this.randomizeMove();
     }
 
-    void randomizeMove(){
+    private void randomizeMove(){
         Random random = new Random();
         int row = random.nextInt(3);
         int col = random.nextInt(3);
