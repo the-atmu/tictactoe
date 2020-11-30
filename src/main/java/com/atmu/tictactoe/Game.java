@@ -3,6 +3,23 @@ package com.atmu.tictactoe;
 import java.util.Arrays;
 import java.util.stream.IntStream;
 
+/*Game class handles all the mechanics and logic of the game
+* It manages a board and two players
+* Player 1 is always the user, and navigates it's course in the game by the inputs of the keyboard
+* The coordination system works with zero base row's and columns. For example 0[enter]2[enter] means
+* mark my position at row 0 and column 2
+*
+* The respective methods can always detect if the board is in a winning state
+* if it is, then it can approve a winner based on the player with the most moves
+* in the moment of the detection of the winning state.
+*
+* The game can be accessed with either the runGame() method, which is the known duel mode
+* or with the runComputerGame() which invokes the second player to be processed and managed by an algorithm
+* that analyzed player 1's moves, which is the class of ComputerPlayer
+*
+* At the end of the match, the winning player is announced.
+*
+*/
 public class Game {
 
     final Board board = new Board();
@@ -89,6 +106,7 @@ public class Game {
     }
 
     private void computerGameProcess(){
+        System.out.println("Player 1 vs Computer");
         do{
             player1.chooseMove();
             checkState();
@@ -101,6 +119,7 @@ public class Game {
     }
 
     private void gameProcess(){
+        System.out.println("Player 1 vs Player 2");
         do {
             player1.chooseMove();
             checkState();

@@ -1,7 +1,13 @@
 package com.atmu.tictactoe;
 
 import java.util.Scanner;
-
+/*
+This is the player class
+Here the logic of choosing a position from the keyboard takes place.
+It proposes the player/user to provide two numbers that represent a move on the board, and if the given
+position has been taken previously it prompts again the user for another correct input.
+Any further logic is processed by the game class.
+ */
 public class Player {
     Game game;
     Board board;

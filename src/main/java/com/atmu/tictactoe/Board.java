@@ -4,7 +4,17 @@ import org.jblas.DoubleMatrix;
 import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;
+/*
+The board class navigates the game by handling the visual representation of the board(front end)
+It starts of by creating a DoubleMatrix object from the jblas external library and fills it with 0's
+The behind the scenes implementation works as follows:
+The matrix is a 3 by 3 table which contains a 0 if the position has not been used by any player.
+It contains 1 guaranteeing that player 1 has taken this position. And finally -1 is the mark of player 2
+being either a real player or a computer player.
 
+It also formats the DoubleMatrix object into a string and formats it into a visual representable form. It converts
+the contents of the matrix 0 , 1 , -1 into "-" , "X", "O" respectively.
+ */
 public class Board {
     public Board(){ }
 

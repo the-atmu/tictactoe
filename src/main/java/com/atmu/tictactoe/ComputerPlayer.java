@@ -5,7 +5,13 @@ import java.util.Collections;
 import java.util.List;
 import java.util.Random;
 import java.util.stream.Collectors;
-
+/*
+* Here the logic exists that can detect a certain threat or a possibility of a win
+* If there's no potential of losing the algorithms chooses to move towards a win.
+* If a threat by player 1 is detected, meaning that player 1 is one move away from winning then it can
+* block the potential win of player 1. Player 2 in computer mode however is not unbeatable
+* it cannot foresee possibilities of winning like other algorithms such as minimax.
+ */
 public class ComputerPlayer extends Player {
     final int P1_MARK = 2;
     final int P2_MARK = -2;
@@ -24,6 +30,7 @@ public class ComputerPlayer extends Player {
                 col = i;
                 if (game.checkAvailableMove(row, col)) {
                     managePotentialMove(row,col);
+                    System.out.printf("Computer played row: %d col: %d%n",row,col);
                     return true;
                 }
             }
@@ -43,6 +50,7 @@ public class ComputerPlayer extends Player {
                 col = Arrays.stream(arr).boxed().collect(Collectors.toList()).indexOf(0);
                 if (game.checkAvailableMove(row, col)) {
                     managePotentialMove(row,col);
+                    System.out.printf("Computer played row: %d col: %d%n",row,col);
                     return true;
                 }
             }
@@ -60,6 +68,7 @@ public class ComputerPlayer extends Player {
             col = row;
             if(game.checkAvailableMove(row,col)){
                 managePotentialMove(row,col);
+                System.out.printf("Computer played row: %d col: %d%n",row,col);
                 return true;
             }
         }
@@ -77,6 +86,7 @@ public class ComputerPlayer extends Player {
             col = Arrays.stream(array).boxed().collect(Collectors.toList()).indexOf(0);
             row = list.indexOf(0);
             if(game.checkAvailableMove(row,col)){
+                System.out.printf("Computer played row: %d col: %d%n",row,col);
                 managePotentialMove(row,col);
                 return true;
             }
@@ -109,8 +119,10 @@ public class ComputerPlayer extends Player {
         Random random = new Random();
         int row = random.nextInt(3);
         int col = random.nextInt(3);
-        if(game.checkAvailableMove(row,col))
-            managePotentialMove(row,col);
+        if(game.checkAvailableMove(row,col)) {
+            managePotentialMove(row, col);
+            System.out.printf("Computer played row: %d col: %d%n",row,col);
+        }
         else randomizeMove();
     }
 }
