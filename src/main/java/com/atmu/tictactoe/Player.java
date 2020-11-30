@@ -28,7 +28,7 @@ public class Player {
             int i = scanner.nextInt();
             System.out.print("(0-2) col: ");
             int j = scanner.nextInt();
-            scanner.close();
+
             if(!game.checkAvailableMove(i,j)){
                 System.out.println("Choose available position");
                 again();
@@ -41,7 +41,7 @@ public class Player {
             int i = scanner.nextInt();
             System.out.print("(0-2) col: ");
             int j = scanner.nextInt();
-            scanner.close();
+
             if(!game.checkAvailableMove(i,j)){
                 System.out.println("Choose available position");
                 again();
