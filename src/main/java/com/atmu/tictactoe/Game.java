@@ -106,6 +106,7 @@ public class Game {
     }
 
     private void computerGameProcess(){
+        System.out.println("Player 1 vs Computer");
         do{
             player1.chooseMove();
             checkState();
@@ -118,6 +119,7 @@ public class Game {
     }
 
     private void gameProcess(){
+        System.out.println("Player 1 vs Player 2");
         do {
             player1.chooseMove();
             checkState();

@@ -30,6 +30,7 @@ public class ComputerPlayer extends Player {
                 col = i;
                 if (game.checkAvailableMove(row, col)) {
                     managePotentialMove(row,col);
+                    System.out.printf("Computer played row: %d col: %d%n",row,col);
                     return true;
                 }
             }
@@ -49,6 +50,7 @@ public class ComputerPlayer extends Player {
                 col = Arrays.stream(arr).boxed().collect(Collectors.toList()).indexOf(0);
                 if (game.checkAvailableMove(row, col)) {
                     managePotentialMove(row,col);
+                    System.out.printf("Computer played row: %d col: %d%n",row,col);
                     return true;
                 }
             }
@@ -66,6 +68,7 @@ public class ComputerPlayer extends Player {
             col = row;
             if(game.checkAvailableMove(row,col)){
                 managePotentialMove(row,col);
+                System.out.printf("Computer played row: %d col: %d%n",row,col);
                 return true;
             }
         }
@@ -83,6 +86,7 @@ public class ComputerPlayer extends Player {
             col = Arrays.stream(array).boxed().collect(Collectors.toList()).indexOf(0);
             row = list.indexOf(0);
             if(game.checkAvailableMove(row,col)){
+                System.out.printf("Computer played row: %d col: %d%n",row,col);
                 managePotentialMove(row,col);
                 return true;
             }
@@ -115,8 +119,10 @@ public class ComputerPlayer extends Player {
         Random random = new Random();
         int row = random.nextInt(3);
         int col = random.nextInt(3);
-        if(game.checkAvailableMove(row,col))
-            managePotentialMove(row,col);
+        if(game.checkAvailableMove(row,col)) {
+            managePotentialMove(row, col);
+            System.out.printf("Computer played row: %d col: %d%n",row,col);
+        }
         else randomizeMove();
     }
 }
